@@ -48,7 +48,7 @@ export default function Home() {
               data-aos="fade-up" // AOS animation for this slide
             >
               <img
-                src="https://thumbs.dreamstime.com/b/banner-featuring-sports-equipment-like-basketball-football-ball-baseball-bat-tennis-racket-badminton-shuttlecocks-323410344.jpg"
+                src="https://www.shutterstock.com/image-vector/set-sport-balls-gaming-items-260nw-599738306.jpg"
                 className="w-full h-[300px] object-cover"
                 alt="Slide 1"
               />

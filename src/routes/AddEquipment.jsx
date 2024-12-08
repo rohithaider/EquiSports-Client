@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const AddEquipment = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+
   const [formData, setFormData] = useState({
     image: null,
     itemName: "",
@@ -32,17 +32,28 @@ const AddEquipment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = new FormData();
-    Object.keys(formData).forEach((key) => {
-      data.append(key, formData[key]);
+    // const data = new FormData();
+    // Object.keys(formData).forEach((key) => {
+    //   data.append(key, formData[key]);
+    // });
+    const form = e.target;
+    const formData = new FormData(form);
+    const sportsData = {};
+
+    formData.forEach((value, key) => {
+      sportsData[key] = value;
     });
 
     try {
+      console.log(sportsData);
       const response = await fetch(
         "https://your-database-api-url.com/equipment",
         {
           method: "POST",
-          body: data,
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(sportsData),
         }
       );
 
@@ -65,12 +76,12 @@ const AddEquipment = () => {
         toast.error("Failed to add equipment.");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.",error);
     }
   };
 
   return (
-    <div className="p-6 bg-gray-100 rounded-md shadow-md">
+    <div className="p-6 bg-orange-100 rounded-md shadow-md w-8/12 mx-auto ">
       <h2 className="text-xl font-semibold mb-4">Add Equipment</h2>
       <form onSubmit={handleSubmit} className="grid gap-4">
         {/* Image */}

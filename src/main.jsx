@@ -16,6 +16,7 @@ import Terms from "./routes/Terms";
 import AllSports from "./routes/AllSports";
 import AddEquipment from "./routes/AddEquipment";
 import MyEquipment from "./routes/MyEquipment";
+import ProductDetails from "./pages/ProductDetails.jsx";
 
 
 const router = createBrowserRouter([
@@ -72,7 +73,15 @@ const router = createBrowserRouter([
       {
         path:"myEquipment",
         element:<ProtectedRoute><MyEquipment/></ProtectedRoute>
-      }
+      },
+      {
+        path: "product-details/:serviceId", // Route with a parameter for the product ID
+        element: (
+          <ProtectedRoute>
+            <ProductDetails />
+          </ProtectedRoute>
+        ),
+      },
     
     ],
   },

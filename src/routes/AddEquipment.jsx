@@ -7,7 +7,7 @@ const AddEquipment = () => {
   const { user } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
-    image: null,
+    image: "", // Changed from null to a string for URL
     itemName: "",
     categoryName: "",
     description: "",
@@ -21,46 +21,29 @@ const AddEquipment = () => {
   });
 
   const handleInputChange = (e) => {
-    const { name, value, type, files } = e.target;
-    if (type === "file") {
-      setFormData({ ...formData, [name]: files[0] });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const data = new FormData();
-    // Object.keys(formData).forEach((key) => {
-    //   data.append(key, formData[key]);
-    // });
-    const form = e.target;
-    const formData = new FormData(form);
-    const sportsData = {};
-
-    formData.forEach((value, key) => {
-      sportsData[key] = value;
-    });
+    const sportsData = { ...formData }; // Clone the form data
 
     try {
       console.log(sportsData);
-      const response = await fetch(
-        "https://your-database-api-url.com/equipment",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(sportsData),
-        }
-      );
+      const response = await fetch("http://localhost:5000/addEquipment", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(sportsData),
+      });
 
       if (response.ok) {
         toast.success("Equipment added successfully!");
         setFormData({
-          image: null,
+          image: "",
           itemName: "",
           categoryName: "",
           description: "",
@@ -76,7 +59,8 @@ const AddEquipment = () => {
         toast.error("Failed to add equipment.");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again.",error);
+      toast.error("An error occurred. Please try again.");
+      console.error(error);
     }
   };
 
@@ -84,15 +68,17 @@ const AddEquipment = () => {
     <div className="p-6 bg-orange-100 rounded-md shadow-md w-8/12 mx-auto ">
       <h2 className="text-xl font-semibold mb-4">Add Equipment</h2>
       <form onSubmit={handleSubmit} className="grid gap-4">
-        {/* Image */}
+        {/* Image URL */}
         <div>
-          <label className="block font-medium">Image</label>
+          <label className="block font-medium">Image URL</label>
           <input
-            type="file"
+            type="text"
             name="image"
-            accept="image/*"
+            value={formData.image}
             onChange={handleInputChange}
             className="block w-full mt-1 border p-2 rounded"
+            placeholder="Enter the image URL"
+            required
           />
         </div>
 

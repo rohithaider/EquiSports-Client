@@ -107,7 +107,7 @@ const Login = () => {
               required
             />
           </div>
-          <p className="mt-4 text-center text-sm">
+          {/* <p className="mt-4 text-center text-sm">
             Forgot your password?{" "}
             <Link
               to="/forgot-password"
@@ -116,7 +116,7 @@ const Login = () => {
             >
               Reset it here
             </Link>
-          </p>
+          </p> */}
 
           <button type="submit" className="btn btn-primary w-full mt-4">
             Login

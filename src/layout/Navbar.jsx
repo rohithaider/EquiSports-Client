@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
+import { Tooltip } from "react-tooltip";
 
 export const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+
   return (
     <div className="w-11/12 mx-auto sticky top-0">
       <div className="navbar bg-base-100">
@@ -43,7 +45,7 @@ export const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost text-xl hidden md:block">
-          EquiSports
+            EquiSports
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -67,14 +69,17 @@ export const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user && user?.email ? (
-            <div className="flex items-center gap-2 ">
+            <div className="flex items-center gap-2">
               <Link to="/profile">
-                <div className="flex  flex-col lg:flex-row text-center items-center gap-2 border p-2 rounded-3xl ">
+                <div
+                  className="flex flex-col lg:flex-row text-center items-center gap-2 border p-2 rounded-3xl"
+                  data-tooltip-id="profile-tooltip"
+                  data-tooltip-content={`Welcome, ${user.displayName}`}
+                >
                   <img
-                    className="w-12 rounded-full "
+                    className="w-12 rounded-full"
                     src={user.photoURL}
-                    alt=""
-                    title={user.displayName}
+                    alt="User Profile"
                   />
                   <h1 className="hidden lg:block">My Profile</h1>
                 </div>
@@ -84,9 +89,9 @@ export const Navbar = () => {
               </button>
             </div>
           ) : (
-            <div className="flex gap-2"> 
+            <div className="flex gap-2">
               <Link to="login" className="btn">
-                Login.
+                Login
               </Link>
               <Link to="register" className="btn">
                 Register
@@ -95,6 +100,8 @@ export const Navbar = () => {
           )}
         </div>
       </div>
+      {/* Tooltip Component */}
+      <Tooltip id="profile-tooltip" place="left" />
     </div>
   );
 };

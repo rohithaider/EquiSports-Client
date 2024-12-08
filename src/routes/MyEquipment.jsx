@@ -40,15 +40,15 @@ const MyEquipment = () => {
 
   return (
     <div>
-      <h1 className="text-center mb-5">My Equipment</h1>
-      <div className="w-10/12 mx-auto">
-      <div className="equipment-list grid grid-cols-3">
+      <h1 className="text-center mb-5 text-2xl font-bold">My Equipment</h1>
+      <div className="w-10/12 mx-auto mb-2">
+      <div className="equipment-list grid grid-cols-3 gap-3">
         {equipments.length === 0 ? (
           <p>No equipment found.</p>
         ) : (
           equipments.map((equipment) => (
-            <div key={equipment._id} className="equipment-card">
-              <img src={equipment.image} alt={equipment.itemName} />
+            <div key={equipment._id} className="equipment-card space-y-2">
+              <img src={equipment.image} alt={equipment.itemName} className="rounded-2xl" />
               <h3><span className="font-bold">Name:</span>{equipment.itemName}</h3>
               <p><span className="font-bold">Description:</span>{equipment.description}</p>
               <p><span className="font-bold">Price:</span> {equipment.price}</p>

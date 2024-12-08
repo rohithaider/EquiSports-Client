@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
 import { AuthContext } from "../contexts/AuthProvider";
+import swal from 'sweetalert';
 
 const MyEquipment = () => {
   const { user } = useContext(AuthContext); // Access the logged-in user context
@@ -23,20 +24,35 @@ const MyEquipment = () => {
   };
   
 
-  const handleDelete = (id) => {
-    // Ask for confirmation before deleting
-    const confirmation = window.confirm("Are you sure you want to delete this equipment?");
-    if (confirmation) {
-      fetch(`/sports/${id}`, { method: "DELETE" })
-        .then((response) => response.json())
-        .then(() => {
-          setEquipments((prevEquipments) =>
-            prevEquipments.filter((equipment) => equipment._id !== id)
-          );
+  function handleDelete(id) {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this imaginary file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((result) => {
+      if (result) {
+        fetch(`https://equi-sports-server-swart.vercel.app/sports/${id}`, {
+          method: "DELETE",
         })
-        .catch((error) => console.error("Error deleting equipment:", error));
-    }
-  };
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              // Update state to remove the deleted equipment from the UI
+              setEquipments((prevEquipments) =>
+                prevEquipments.filter((equipment) => equipment._id !== id)
+              );
+              swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+              });
+            }
+          })
+          .catch((error) => console.error("Error deleting equipment:", error));
+      }
+    });
+  }
+  
 
   return (
     <div>

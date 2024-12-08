@@ -1,40 +1,57 @@
-# SkillSphere
+# Lotus EquiSports - A Sports Equipment Online Store 🏀🏐⚽
 
-SkillSphere is a career counseling website that helps users find the right guidance and resources for their career journey. The platform offers detailed service information, counselor profiles, pricing, ratings, customer reviews, and Google Maps location for each counselor. Users can also log in using Google for a seamless experience.
+Welcome to **Lotus EquiSports**, an e-commerce platform for purchasing and managing sports accessories and equipment. Designed with responsiveness, user-friendly navigation, and essential features, this site provides a seamless experience for browsing, adding, and reviewing sports equipment.
 
-## Features
+## 🌟 Features
+1. **User Authentication**: 
+   - Secure login and registration using Email/Password and Google authentication. 
+   - Conditional rendering for logged-in and non-logged-in users, displaying user details and a logout option.
+2. **Dynamic Equipment Management**:
+   - Private routes for adding, viewing, updating, and managing personal equipment lists.
+   - Features like sorting equipment by price and detailed product displays.
+3. **Dark/Light Mode Toggle**:
+   - Easily switch between light and dark themes for better user experience.
+4. **Fully Responsive**:
+   - Optimized for mobile, tablet, and desktop devices.
+5. **Interactive and Unique Design**:
+   - Utilized **React Tooltip** for enriched user interactivity.
+   - Beautiful animations with **React Awesome Reveal** for a polished design.
 
-- **Counselor Information**: Users can see detailed information about each career counselor, including:
-  - Name
-  - Services offered
-  - Price
-  - Ratings
-  - Customer reviews
-  - Google Maps location
+## 🛠️ Technologies Used
+- **Frontend**: React, React Router, DaisyUI
+- **Backend**: Node.js, Express, MongoDB
+- **Authentication**: Firebase
+- **Hosting**: 
+  - Client: Netlify  
+  - Server: Vercel
+- **Additional Libraries**: React Tooltip, React Awesome Reveal
 
-- **Login with Google**: Users can sign in quickly and securely using their Google account.
+## 🚀 Live Site
+[Lotus EquiSports Live](https://skillsphere-c2034.web.app/) 
 
-- **Interactive Map**: A Google Map integration to show the counselor's location.
 
-- **Responsive Design**: The website is designed using **Tailwind CSS** and **daisyUI** for responsive, modern UI components.
 
-- **Animation**: Smooth animations powered by **AOS** (Animate On Scroll) to enhance the user experience.
+## 📜 Key Highlights
+1. **Navbar**:
+   - Includes website logo, Home, All Sports Equipment, Add Equipment (Private), My Equipment List (Private), Login/Register, and logout options for logged-in users.
+2. **Footer**:
+   - Includes website name, copyright info, contact details, and social media links.
+3. **Error Handling**:
+   - Custom 404 page for non-existent routes.
+   - Real-time error messages using custom toasts for validation and feedback.
+4. **CRUD Functionalities**:
+   - Add, update, delete, and view detailed information for sports equipment.
+5. **Loading Spinner**:
+   - Displays during data fetching for better user feedback.
 
-- **SEO Optimization**: The website is SEO-friendly with the use of **React Helmet** for managing meta tags.
+## 📄 Environment Variables
+Sensitive keys like Firebase config and MongoDB credentials are secured using `.env` files.
 
-## Live Link
+## 🏆 Challenges Implemented
+1. Sort functionality on the "All Sports Equipment" page by price.
+2. Dark/Light theme toggle.
+3. Integrated **React Tooltip** and **React Awesome Reveal** for enhanced UI/UX.
 
-You can visit the live version of the website here: [SkillSphere Live](https://skillsphere-c2034.web.app/)
-
-## Technologies Used
-
-- **React**: JavaScript library for building user interfaces.
-- **React Router**: For handling navigation and routing within the app.
-- **AOS**: Animate On Scroll library for adding animations when elements come into view.
-- **React Helmet**: For managing the document head and improving SEO.
-- **Leaflet Map**: Open-source library to embed interactive maps.
-- **Tailwind CSS**: Utility-first CSS framework for building custom designs.
-- **daisyUI**: Component library built on top of Tailwind CSS for pre-built UI components.
-- **Firebase Authentication**: For user authentication via Google.
+---
 
 

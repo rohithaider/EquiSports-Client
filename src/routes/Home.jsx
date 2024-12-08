@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
 import ServiceCards from "../components/ServiceCards";
 import { Helmet } from "react-helmet";
@@ -7,6 +7,7 @@ import "aos/dist/aos.css"; // Import AOS styles
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"; // Import React-Leaflet components
 import "leaflet/dist/leaflet.css"; // Leaflet CSS
 import L from "leaflet"; // For custom marker icons
+import axios from "axios"; // For API requests
 
 // Fix for Leaflet default marker icons
 delete L.Icon.Default.prototype._getIconUrl;
@@ -20,7 +21,9 @@ L.Icon.Default.mergeOptions({
 });
 
 export default function Home() {
-  const { data } = useContext(AuthContext);
+  const [sportsData, setSportsData] = useState([]);
+  const [filteredSports, setFilteredSports] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   // Initialize AOS
   useEffect(() => {
@@ -30,6 +33,30 @@ export default function Home() {
       once: true,
     });
   }, []);
+
+  // Fetch sports data from API
+  useEffect(() => {
+    axios.get("https://equi-sports-server-swart.vercel.app/sports")
+      .then((response) => {
+        setSportsData(response.data);
+        setFilteredSports(response.data);
+      })
+      .catch((error) => console.error("Error fetching sports data", error));
+  }, []);
+
+  // Handle category selection and filter sports products
+  const handleCategoryChange = (category) => {
+    console.log(category)
+    setSelectedCategory(category);
+    if (category === "all") {
+      setFilteredSports(sportsData);
+    } else {
+      const filtered = sportsData.filter(
+        (product) => product.categoryName === category
+      );
+      setFilteredSports(filtered);
+    }
+  };
 
   return (
     <div>
@@ -45,7 +72,7 @@ export default function Home() {
             <div
               id="slide1"
               className="carousel-item relative w-full transition-all duration-1000"
-              data-aos="fade-up" // AOS animation for this slide
+              data-aos="fade-up"
             >
               <img
                 src="https://www.shutterstock.com/image-vector/set-sport-balls-gaming-items-260nw-599738306.jpg"
@@ -66,7 +93,7 @@ export default function Home() {
             <div
               id="slide2"
               className="carousel-item relative w-full transition-all duration-1000"
-              data-aos="fade-up" // AOS animation for this slide
+              data-aos="fade-up"
             >
               <img
                 src="https://www.shutterstock.com/image-photo/closeup-various-sport-equipment-isolated-260nw-2171553587.jpg"
@@ -87,7 +114,7 @@ export default function Home() {
             <div
               id="slide3"
               className="carousel-item relative w-full transition-all duration-1000"
-              data-aos="fade-up" // AOS animation for this slide
+              data-aos="fade-up"
             >
               <img
                 src="https://www.shutterstock.com/image-photo/high-angle-view-different-sports-260nw-1575444292.jpg"
@@ -107,27 +134,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Sports Category Section */}
       <section className="mt-4 w-11/12 mx-auto mb-4">
         <div>
           <h1 className="text-center text-3xl" data-aos="fade-up">
-            Our Services
+            Sports Categories
           </h1>
           <hr className="w-1/2 mx-auto" />
         </div>
 
-        {/* Card Section */}
+        {/* Category Selection */}
+        <div className="flex justify-center mt-4 space-x-4">
+          {["all", "Cricket", "Football", "Basketball", "Tennis", "Badminton", "Table Tennis", "Other Sports"].map((category) => (
+            <button
+              key={category}
+              className={`btn ${selectedCategory === category ? "btn-primary" : "btn-secondary"}`}
+              onClick={() => handleCategoryChange(category)}
+            >
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </button>
+          ))}
+        </div>
+
+        {/* Display Filtered Sports Products */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-          {data ? (
-            data.map((item, index) => (
+          {filteredSports.length > 0 ? (
+            filteredSports.map((item, index) => (
               <div key={index} data-aos="fade-up">
-                {" "}
-                {/* Add AOS to each card */}
                 <ServiceCards item={item} />
               </div>
             ))
           ) : (
-            <span className="loading loading-dots loading-lg"></span>
+            <div className="text-center text-xl text-red-500">No equipment found in this category.</div>
           )}
         </div>
       </section>
@@ -142,7 +180,7 @@ export default function Home() {
             {/* Testimonial Cards */}
             <div
               className="bg-white p-6 shadow-lg rounded-lg"
-              data-aos="fade-right" // Animation effect
+              data-aos="fade-right"
             >
               <p className="text-xl italic mb-4">
                 "Great service, highly recommend!"
@@ -152,7 +190,7 @@ export default function Home() {
             </div>
             <div
               className="bg-white p-6 shadow-lg rounded-lg"
-              data-aos="fade-up" // Animation effect
+              data-aos="fade-up"
             >
               <p className="text-xl italic mb-4">
                 "The experience was fantastic. Will come again!"
@@ -162,7 +200,7 @@ export default function Home() {
             </div>
             <div
               className="bg-white p-6 shadow-lg rounded-lg"
-              data-aos="fade-left" // Animation effect
+              data-aos="fade-left"
             >
               <p className="text-xl italic mb-4">
                 "Exceptional quality and amazing support."

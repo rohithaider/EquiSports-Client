@@ -7,7 +7,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/sports/${serviceId}`) // Ensure backend has a route to fetch by ID
+    fetch(`https://equi-sports-server-swart.vercel.app/sports/${serviceId}`) // Ensure backend has a route to fetch by ID
       .then((res) => res.json())
       .then((data) => setProduct(data))
       .catch((err) => console.error(err));
@@ -21,7 +21,7 @@ const ProductDetails = () => {
     <div className="container mx-auto my-10">
       <h1 className="text-3xl font-bold text-center mb-5">Equipment Details</h1>
       <div className="flex justify-center">
-        <div className="card w-full md:w-2/3 lg:w-1/2 bg-white shadow-lg rounded-lg p-5">
+        <div className="card w-full md:w-2/3 lg:w-1/2 bg-white shadow-lg rounded-lg p-5 text-center">
           <img
             src={product.image}
             alt={product.name}

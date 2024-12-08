@@ -32,7 +32,7 @@ const AddEquipment = () => {
 
     try {
       console.log(sportsData);
-      const response = await fetch("http://localhost:5000/addEquipment", {
+      const response = await fetch("https://equi-sports-server-swart.vercel.app/addEquipment", {
         method: "POST",
         headers: {
           "content-type": "application/json",

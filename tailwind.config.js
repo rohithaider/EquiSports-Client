@@ -22,7 +22,8 @@ export default {
       "dracula",
       "acid",
       "nord",
-      "cyberpunk"// Add more themes as needed
+      "cyberpunk",
+      "lemonade"// Add more themes as needed
     ],
   }
 }

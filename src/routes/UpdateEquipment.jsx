@@ -25,7 +25,7 @@ const UpdateEquipment = () => {
 
   // Fetch the equipment data based on the ID when the component mounts
   useEffect(() => {
-    fetch(`http://localhost:5000/sports/${id}`)
+    fetch(`https://equi-sports-server-swart.vercel.app/sports/${id}`)
       .then((response) => response.json())
       .then((data) => setFormData(data))
       .catch((error) => console.error("Error fetching equipment data:", error));
@@ -42,26 +42,7 @@ const UpdateEquipment = () => {
     const updatedEquipment = { ...formData };
     console.log(updatedEquipment);
 
-    // try {
-    //   const response = await fetch(`http://localhost:5000/sports/${id}`, {
-    //     method: "PUT", // Use PUT to update the data
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(updatedEquipment),
-    //   });
-
-    //   if (response.ok) {
-    //     toast.success("Equipment updated successfully!");
-    //     navigate("/myEquipment"); // Redirect back to the equipment list page after successful update
-    //   } else {
-    //     toast.error("Failed to update equipment.");
-    //   }
-    // } catch (error) {
-    //   toast.error("An error occurred. Please try again.");
-    //   console.error(error);
-    // }
-    fetch(`http://localhost:5000/sports/${id}`, {
+    fetch(`https://equi-sports-server-swart.vercel.app/sports/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

@@ -11,7 +11,7 @@ const MyEquipment = () => {
   useEffect(() => {
     // Fetch user's equipment data from the backend based on their email
     if (user) {
-      fetch(`http://localhost:5000/sportsByEmail?userEmail=${user.email}`) // Corrected fetch URL to use the new route
+      fetch(`https://equi-sports-server-swart.vercel.app/sportsByEmail?userEmail=${user.email}`) // Corrected fetch URL to use the new route
         .then((response) => response.json())
         .then((data) => setEquipments(data))
         .catch((error) => console.error("Error fetching equipment:", error));

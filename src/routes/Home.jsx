@@ -131,6 +131,8 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      {/* Testimonial Section */}
       <section className="mt-8 w-11/12 mx-auto">
         <h2 className="text-center text-3xl mb-4" data-aos="fade-up">
           What Our Clients Say
@@ -143,7 +145,7 @@ export default function Home() {
               data-aos="fade-right" // Animation effect
             >
               <p className="text-xl italic mb-4">
-                "Great service, highly recommend!&quot;
+                "Great service, highly recommend!"
               </p>
               <h3 className="font-semibold text-lg">John Doe</h3>
               <p className="text-sm text-gray-500">CEO, Example Corp</p>
@@ -153,7 +155,7 @@ export default function Home() {
               data-aos="fade-up" // Animation effect
             >
               <p className="text-xl italic mb-4">
-                "The experience was fantastic. Will come again!&quot;
+                "The experience was fantastic. Will come again!"
               </p>
               <h3 className="font-semibold text-lg">Jane Smith</h3>
               <p className="text-sm text-gray-500">Manager, Tech Solutions</p>
@@ -163,7 +165,7 @@ export default function Home() {
               data-aos="fade-left" // Animation effect
             >
               <p className="text-xl italic mb-4">
-                "Exceptional quality and amazing support.&quot;
+                "Exceptional quality and amazing support."
               </p>
               <h3 className="font-semibold text-lg">Alice Brown</h3>
               <p className="text-sm text-gray-500">Founder, Startup Inc.</p>
@@ -171,6 +173,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Location Section */}
       <section className="mt-8 w-11/12 mx-auto mb-8">
         <h2 className="text-center text-3xl mb-4" data-aos="fade-up">
           Location
@@ -189,7 +193,6 @@ export default function Home() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-
             <Marker position={[23.685, 90.3563]}>
               <Popup>
                 We are located here! <br /> Contact us anytime.

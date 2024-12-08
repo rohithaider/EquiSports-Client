@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import ServiceCards from "../components/ServiceCards";
 import { Helmet } from "react-helmet";
-import AOS from "aos"; // Import AOS
-import "aos/dist/aos.css"; // Import AOS styles
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"; // Import React-Leaflet components
-import "leaflet/dist/leaflet.css"; // Leaflet CSS
-import L from "leaflet"; // For custom marker icons
-import axios from "axios"; // For API requests
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { Fade } from "react-awesome-reveal";
+import axios from "axios";
+
+// Leaflet imports
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 
 // Fix for Leaflet default marker icons
 delete L.Icon.Default.prototype._getIconUrl;
@@ -24,7 +26,8 @@ export default function Home() {
   const [sportsData, setSportsData] = useState([]);
   const [filteredSports, setFilteredSports] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState("light"); // Theme state
 
   // Initialize AOS
   useEffect(() => {
@@ -35,27 +38,26 @@ export default function Home() {
     });
   }, []);
 
-  // Fetch sports data from API
+  // Fetch sports data
   useEffect(() => {
-    setLoading(true); // Start loading
+    setLoading(true);
     axios
       .get("https://equi-sports-server-swart.vercel.app/sports")
       .then((response) => {
         setSportsData(response.data);
         setFilteredSports(response.data);
-        setLoading(false); // End loading
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching sports data", error);
-        setLoading(false); // End loading even on error
+        setLoading(false);
       });
   }, []);
 
-  // Handle category selection and filter sports products
+  // Handle category selection
   const handleCategoryChange = (category) => {
-    console.log(category);
     setSelectedCategory(category);
-    setLoading(true); // Show loading while filtering
+    setLoading(true);
     setTimeout(() => {
       if (category === "all") {
         setFilteredSports(sportsData);
@@ -65,16 +67,98 @@ export default function Home() {
         );
         setFilteredSports(filtered);
       }
-      setLoading(false); // End loading after filtering
-    }, 500); // Simulate async behavior
+      setLoading(false);
+    }, 500);
+  };
+
+  // Toggle theme
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
   };
 
   return (
-    <div>
+    <div className={`theme-${theme}`}>
       <Fade>
         <Helmet>
           <title>Home Page</title>
         </Helmet>
+
+        <section>
+          <div className="w-11/12 mx-auto">
+            <div className="carousel w-full">
+              {/* Slide 1 */}
+              <div
+                id="slide1"
+                className="carousel-item relative w-full transition-all duration-1000"
+                data-aos="fade-up"
+              >
+                <img
+                  src="https://www.shutterstock.com/image-vector/set-sport-balls-gaming-items-260nw-599738306.jpg"
+                  className="w-full h-[300px] object-cover"
+                  alt="Slide 1"
+                />
+                <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                  <a href="#slide4" className="btn btn-circle">
+                    ❮
+                  </a>
+                  <a href="#slide2" className="btn btn-circle">
+                    ❯
+                  </a>
+                </div>
+              </div>
+
+              {/* Slide 2 */}
+              <div
+                id="slide2"
+                className="carousel-item relative w-full transition-all duration-1000"
+                data-aos="fade-up"
+              >
+                <img
+                  src="https://www.shutterstock.com/image-photo/closeup-various-sport-equipment-isolated-260nw-2171553587.jpg"
+                  className="w-full h-[300px] object-cover"
+                  alt="Slide 2"
+                />
+                <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                  <a href="#slide1" className="btn btn-circle">
+                    ❮
+                  </a>
+                  <a href="#slide3" className="btn btn-circle">
+                    ❯
+                  </a>
+                </div>
+              </div>
+
+              {/* Slide 3 */}
+              <div
+                id="slide3"
+                className="carousel-item relative w-full transition-all duration-1000"
+                data-aos="fade-up"
+              >
+                <img
+                  src="https://www.shutterstock.com/image-photo/high-angle-view-different-sports-260nw-1575444292.jpg"
+                  className="w-full h-[300px] object-cover"
+                  alt="Slide 3"
+                />
+                <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                  <a href="#slide2" className="btn btn-circle">
+                    ❮
+                  </a>
+                  <a href="#slide4" className="btn btn-circle">
+                    ❯
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Theme Toggle Button */}
+        <div className="flex justify-end w-11/12 mx-auto">
+          <button className="btn btn-outline btn-sm" onClick={toggleTheme}>
+            {theme === "light" ? "Switch to Dark" : "Switch to Light"}
+          </button>
+        </div>
 
         {/* Sports Category Section */}
         <section className="mt-4 w-11/12 mx-auto mb-4">
@@ -85,7 +169,6 @@ export default function Home() {
             <hr className="w-1/2 mx-auto" />
           </div>
 
-          {/* Category Selection */}
           <div className="flex justify-center mt-4 space-x-4">
             {[
               "all",
@@ -111,7 +194,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Display Filtered Sports Products */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
             {loading ? (
               <div className="text-center col-span-full">

@@ -212,6 +212,73 @@ export default function Home() {
             )}
           </div>
         </section>
+        <section className="mt-8 w-11/12 mx-auto">
+        <h2 className="text-center text-3xl mb-4" data-aos="fade-up">
+          What Our Clients Say
+        </h2>
+        <div className="flex justify-center">
+          <div className="max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Testimonial Cards */}
+            <div
+              className="bg-white p-6 shadow-lg rounded-lg"
+              data-aos="fade-right" // Animation effect
+            >
+              <p className="text-xl italic mb-4">
+                "Great service, highly recommend!&quot;
+              </p>
+              <h3 className="font-semibold text-lg">John Doe</h3>
+              <p className="text-sm text-gray-500">CEO, Example Corp</p>
+            </div>
+            <div
+              className="bg-white p-6 shadow-lg rounded-lg"
+              data-aos="fade-up" // Animation effect
+            >
+              <p className="text-xl italic mb-4">
+                "The experience was fantastic. Will come again!&quot;
+              </p>
+              <h3 className="font-semibold text-lg">Jane Smith</h3>
+              <p className="text-sm text-gray-500">Manager, Tech Solutions</p>
+            </div>
+            <div
+              className="bg-white p-6 shadow-lg rounded-lg"
+              data-aos="fade-left" // Animation effect
+            >
+              <p className="text-xl italic mb-4">
+                "Exceptional quality and amazing support.&quot;
+              </p>
+              <h3 className="font-semibold text-lg">Alice Brown</h3>
+              <p className="text-sm text-gray-500">Founder, Startup Inc.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+        <section className="mt-8 w-11/12 mx-auto mb-8">
+        <h2 className="text-center text-3xl mb-4" data-aos="fade-up">
+          Location
+        </h2>
+        <div
+          className="w-full h-[400px] rounded-lg shadow-lg"
+          data-aos="zoom-in"
+        >
+          <MapContainer
+            center={[23.685, 90.3563]} 
+            zoom={7}
+            scrollWheelZoom={false}
+            className="h-full w-full"
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            
+            <Marker position={[23.685, 90.3563]}>
+              <Popup>
+                We are located here! <br /> Contact us anytime.
+              </Popup>
+            </Marker>
+          </MapContainer>
+        </div>
+      </section>
       </Fade>
     </div>
   );

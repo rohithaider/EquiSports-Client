@@ -17,6 +17,7 @@ import AllSports from "./routes/AllSports";
 import AddEquipment from "./routes/AddEquipment";
 import MyEquipment from "./routes/MyEquipment";
 import ProductDetails from "./pages/ProductDetails.jsx";
+import UpdateEquipment from "./routes/UpdateEquipment.jsx";
 
 
 const router = createBrowserRouter([
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path:"updateEquipment/:id",
+        element:<UpdateEquipment/>
+      }
     
     ],
   },

@@ -5,10 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../contexts/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Importing icons
 import { Helmet } from "react-helmet";
+import { getAuth, updateProfile } from "firebase/auth"; // Import updateProfile
 
 const Register = () => {
-  const navigate=useNavigate()
-  const { createUser, setUser, logOut,googleLogIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { createUser, setUser, logOut, googleLogIn } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -40,22 +41,42 @@ const Register = () => {
       return;
     }
 
+    // Register the user with email and password
     createUser(formData.email, formData.password)
       .then((result) => {
         const user = result.user;
-        setUser({
-          ...user,
+
+        // Use Firebase Auth to update the profile after user creation
+        const auth = getAuth();
+        updateProfile(auth.currentUser, {
           displayName: formData.name,
           photoURL: formData.photoURL,
-        });
-        logOut();
+        })
+          .then(() => {
+            setUser({
+              ...user,
+              displayName: formData.name,
+              photoURL: formData.photoURL,
+            });
+            logOut();
+            toast.success("Registration successful!");
+            navigate("/"); // Redirect to homepage after registration
+          })
+          .catch((error) => {
+            setError("Failed to update user profile: " + error.message);
+            toast.error("Failed to update user profile.");
+          });
       })
       .catch((error) => {
-        console.error(error.code, error.message);
+        if (error.code === "auth/email-already-in-use") {
+          setError("This email is already registered. Please log in.");
+          toast.error("This email is already in use. Please log in.");
+        } else {
+          setError(error.message);
+          toast.error(error.message);
+        }
       });
 
-    toast.success("Registration successful!");
-    setError("");
     setFormData({
       name: "",
       email: "",
@@ -67,7 +88,7 @@ const Register = () => {
   const handleGoogleLogin = () => {
     googleLogIn();
     toast.success("Logged in successfully");
-    navigate("/")
+    navigate("/");
   };
 
   return (

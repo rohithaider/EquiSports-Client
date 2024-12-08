@@ -21,7 +21,8 @@ export default {
       "forest",
       "dracula",
       "acid",
-      "nord"// Add more themes as needed
+      "nord",
+      "cyberpunk"// Add more themes as needed
     ],
   }
 }

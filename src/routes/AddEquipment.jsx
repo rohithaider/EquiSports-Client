@@ -4,7 +4,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddEquipment = () => {
-  const { user } = useContext(AuthContext); // Access logged-in user
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const [formData, setFormData] = useState({
     image: null,
     itemName: "",
@@ -37,10 +38,13 @@ const AddEquipment = () => {
     });
 
     try {
-      const response = await fetch("https://your-database-api-url.com/equipment", {
-        method: "POST",
-        body: data,
-      });
+      const response = await fetch(
+        "https://your-database-api-url.com/equipment",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
 
       if (response.ok) {
         toast.success("Equipment added successfully!");
@@ -94,17 +98,25 @@ const AddEquipment = () => {
           />
         </div>
 
-        {/* Category Name */}
+        {/* Category Name (Dropdown) */}
         <div>
           <label className="block font-medium">Category Name</label>
-          <input
-            type="text"
+          <select
             name="categoryName"
             value={formData.categoryName}
             onChange={handleInputChange}
             className="block w-full mt-1 border p-2 rounded"
             required
-          />
+          >
+            <option value="">Select Category</option>
+            <option value="Cricket">Cricket</option>
+            <option value="Football">Football</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Tennis">Tennis</option>
+            <option value="Badminton">Badminton</option>
+            <option value="Table Tennis">Table Tennis</option>
+            <option value="Other Sports">Other Sports</option>
+          </select>
         </div>
 
         {/* Description */}

@@ -48,7 +48,7 @@ export default function Home() {
               data-aos="fade-up" // AOS animation for this slide
             >
               <img
-                src="https://scontent.fcgp3-1.fna.fbcdn.net/v/t39.30808-6/300623855_570417371461715_5767449349184758025_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFz4S1Vz076UWQeT6mYcIbmIW6qlrhIQbIhbqqWuEhBsqE7mAChx82DEg9r91t99Wg8K2K3pCa-ISYIMLiClpIa&_nc_ohc=HsJR5A1JMU4Q7kNvgHdLVtn&_nc_zt=23&_nc_ht=scontent.fcgp3-1.fna&_nc_gid=A9x3c-Rb8aAwyk7fMQKeE6E&oh=00_AYCpRGfjZhROU3b9yWqzoSFhblb7K2yyEvCH6VNcUnrYKQ&oe=6748C24B"
+                src="https://thumbs.dreamstime.com/b/banner-featuring-sports-equipment-like-basketball-football-ball-baseball-bat-tennis-racket-badminton-shuttlecocks-323410344.jpg"
                 className="w-full h-[300px] object-cover"
                 alt="Slide 1"
               />
@@ -69,7 +69,7 @@ export default function Home() {
               data-aos="fade-up" // AOS animation for this slide
             >
               <img
-                src="https://krisp.ai/blog/wp-content/uploads/2024/06/business-meeting.webp"
+                src="https://www.shutterstock.com/image-photo/closeup-various-sport-equipment-isolated-260nw-2171553587.jpg"
                 className="w-full h-[300px] object-cover"
                 alt="Slide 2"
               />
@@ -90,7 +90,7 @@ export default function Home() {
               data-aos="fade-up" // AOS animation for this slide
             >
               <img
-                src="https://images.stockcake.com/public/2/e/3/2e329629-bbb8-4bde-8f56-7540238f7dd1_large/professional-business-meeting-stockcake.jpg"
+                src="https://www.shutterstock.com/image-photo/high-angle-view-different-sports-260nw-1575444292.jpg"
                 className="w-full h-[300px] object-cover"
                 alt="Slide 3"
               />
@@ -180,7 +180,7 @@ export default function Home() {
           data-aos="zoom-in"
         >
           <MapContainer
-            center={[23.685, 90.3563]} 
+            center={[23.685, 90.3563]}
             zoom={7}
             scrollWheelZoom={false}
             className="h-full w-full"
@@ -189,7 +189,7 @@ export default function Home() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-            
+
             <Marker position={[23.685, 90.3563]}>
               <Popup>
                 We are located here! <br /> Contact us anytime.

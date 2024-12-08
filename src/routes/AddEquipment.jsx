@@ -70,7 +70,7 @@ const AddEquipment = () => {
       <form onSubmit={handleSubmit} className="grid gap-4">
         {/* Image URL */}
         <div>
-          <label className="block font-medium">Image URL</label>
+          <label className="block font-medium">Add Product Image URL</label>
           <input
             type="text"
             name="image"

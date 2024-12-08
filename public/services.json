@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTEmFEr3ObAjUmvt7KkViKvS7v9yOsVTaLXA&s",
+    "serviceName": "Career Counseling Sessions",
+    "category": "Online",
+    "description": "Personalized career guidance to help you choose the right path.",
+    "pricing": "$50",
+    "duration": "05-12-24 5-6pm",
+    "counselor": "Dr. Sarah Johnson",
+    "rating": 4.8,
+    "learnMore": "https://example.com/service/career-counseling"
+  },
+  {
+    "id": 2,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtwgH-lxCIyPhw-AQeZXQIDqU78fe7jKd76A&s",
+    "serviceName": "Resume Review",
+    "category": "Online",
+    "description": "Get your resume professionally reviewed and tailored to your industry.",
+    "pricing": "$30",
+    "duration": "06-12-24 2-3pm",
+    "counselor": "Mr. John Smith",
+    "rating": 4.5,
+    "learnMore": "https://example.com/service/resume-review"
+  },
+  {
+    "id": 3,
+    "image": "https://news.zoom.us/wp-content/uploads/2023/08/Zoom-Clips-1024x640.png",
+    "serviceName": "Mock Interviews",
+    "category": "Group",
+    "description": "Prepare for your dream job with realistic interview practice.",
+    "pricing": "$40",
+    "duration": "07-12-24 3-5pm",
+    "counselor": "Ms. Emily Davis",
+    "rating": 4.7,
+    "learnMore": "https://example.com/service/mock-interviews"
+  },
+  {
+    "id": 4,
+    "image": "https://images.pexels.com/photos/7869127/pexels-photo-7869127.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "serviceName": "Public Speaking Workshop",
+    "category": "Offline",
+    "description": "Enhance your communication skills with hands-on activities.",
+    "pricing": "$60",
+    "duration": "08-12-24 10am-12pm",
+    "counselor": "Mr. Andrew Lee",
+    "rating": 4.6,
+    "learnMore": "https://example.com/service/public-speaking"
+  },
+  {
+    "id": 5,
+    "image": "https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/401c8341-f47a-47fb-9445-37c9ba492178/44bbfc75-fd6d-4d36-bf16-b8c99b414833.png",
+    "serviceName": "Time Management Coaching",
+    "category": "Online",
+    "description": "Learn effective time management techniques to boost productivity.",
+    "pricing": "$35",
+    "duration": "09-12-24 1-2pm",
+    "counselor": "Dr. Rebecca Brown",
+    "rating": 4.9,
+    "learnMore": "https://example.com/service/time-management"
+  },
+  {
+    "id": 6,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhXBl8ZPsXmKdfoLSikLOxG4EFcpFl43l3VQ&s",
+    "serviceName": "Personality Development",
+    "category": "Group",
+    "description": "Work on your confidence and interpersonal skills with expert guidance.",
+    "pricing": "$55",
+    "duration": "10-12-24 11am-1pm",
+    "counselor": "Ms. Laura Wilson",
+    "rating": 4.8,
+    "learnMore": "https://example.com/service/personality-development"
+  },
+  {
+    "id": 7,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6JKoacqeNB6BJT3f_0OR_cU8hxqhvfXoOOA&s",
+    "serviceName": "Stress Management Workshop",
+    "category": "Offline",
+    "description": "Learn stress management techniques for a balanced lifestyle.",
+    "pricing": "$45",
+    "duration": "11-12-24 4-6pm",
+    "counselor": "Mr. Richard Martinez",
+    "rating": 4.5,
+    "learnMore": "https://example.com/service/stress-management"
+  },
+  {
+    "id": 8,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWovcPP7WNsI0shcy371J0x3WdM9D_uY48mQ&s",
+    "serviceName": "Leadership Training",
+    "category": "Group",
+    "description": "Build leadership skills to excel in your professional life.",
+    "pricing": "$70",
+    "duration": "12-12-24 9am-12pm",
+    "counselor": "Dr. Michelle Taylor",
+    "rating": 4.7,
+    "learnMore": "https://example.com/service/leadership-training"
+  },
+  {
+    "id": 9,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKK8yIiOpT_wzQgHBHcVCtSXpnz8hnE3XKDQ&s",
+    "serviceName": "Networking Skills Workshop",
+    "category": "Online",
+    "description": "Master the art of professional networking with practical exercises.",
+    "pricing": "$50",
+    "duration": "13-12-24 6-7pm",
+    "counselor": "Ms. Angela White",
+    "rating": 4.6,
+    "learnMore": "https://example.com/service/networking-skills"
+  },
+  {
+    "id": 10,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3rwwCuEoO_fQDL5P63p5_n59-WDwbs7sPCw&s",
+    "serviceName": "Emotional Intelligence Coaching",
+    "category": "Offline",
+    "description": "Enhance your emotional intelligence for better relationships and success.",
+    "pricing": "$65",
+    "duration": "14-12-24 2-4pm",
+    "counselor": "Mr. Charles Green",
+    "rating": 4.9,
+    "learnMore": "https://example.com/service/emotional-intelligence"
+  }
+]

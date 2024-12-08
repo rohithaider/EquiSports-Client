@@ -23,7 +23,7 @@ export default function ServiceCards({ item }) {
           Rating: <span className="font-medium">{item.rating}</span>
         </p>
         <div className="card-actions justify-end mt-4">
-          <Link to={`/service-details/${item._id}`} className="btn btn-primary">Learn More</Link>
+          <Link to={`/product-details/${item._id}`} className="btn btn-primary">Learn More</Link>
         </div>
       </div>
     </div>

@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path:"terms",
-        element:<ProtectedRoute><Terms/></ProtectedRoute>
+        element:<Terms/>
       },
       {
         path:"allSports",

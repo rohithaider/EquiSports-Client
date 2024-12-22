@@ -28,6 +28,7 @@
     "react-tooltip": "^5.28.0",
     "swal": "^0.1.0",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.15.3",
     "swiper": "^11.1.15"
   },
   "devDependencies": {

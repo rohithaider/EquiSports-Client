@@ -1,8 +1,7 @@
 import { useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2"; // Import SweetAlert2
 import { Helmet } from "react-helmet";
 
 const Login = () => {
@@ -21,42 +20,37 @@ const Login = () => {
       // Call the signIn function with email and password
       await signIn(email, password);
 
-      // Show success toast
-      toast.success("Logged in successfully!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
+      // Show success alert
+      Swal.fire({
+        icon: 'success',
+        title: 'Logged in successfully!',
+        text: 'Welcome back!',
+        timer: 3000,
+        showConfirmButton: false,
       });
 
       // Redirect the user to the previous page
       navigate(from, { replace: true });
     } catch (error) {
       // Handle errors 
-      toast.error(`Login failed: ${error.message}`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
+      Swal.fire({
+        icon: 'error',
+        title: 'Login failed',
+        text: `Login failed: ${error.message}`,
+        timer: 3000,
+        showConfirmButton: false,
       });
     }
   };
 
-  const handleGoogleLogin = () => {
-    googleLogIn();
+  const handleGoogleLogin = async () => {
+    await googleLogIn();
     // Google Login logic
-    toast.success("Successfully logged in with Google!", {
-      position: "top-right",
-      autoClose: 3000,
-      theme: "light",
+    Swal.fire({
+      icon: 'success',
+      title: 'Successfully logged in with Google!',
+      timer: 3000,
+      showConfirmButton: false,
     });
 
     // Redirect to the home page 
@@ -107,16 +101,6 @@ const Login = () => {
               required
             />
           </div>
-          {/* <p className="mt-4 text-center text-sm">
-            Forgot your password?{" "}
-            <Link
-              to="/forgot-password"
-              state={{ email }} 
-              className="link link-primary"
-            >
-              Reset it here
-            </Link>
-          </p> */}
 
           <button type="submit" className="btn btn-primary w-full mt-4">
             Login
@@ -140,8 +124,6 @@ const Login = () => {
           </Link>
         </p>
       </div>
-  
-      <ToastContainer />
     </div>
   );
 };

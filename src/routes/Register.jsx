@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2"; // Import SweetAlert2
 import { AuthContext } from "../contexts/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Importing icons
 import { Helmet } from "react-helmet";
@@ -37,7 +36,11 @@ const Register = () => {
       setError(
         "Password must have at least one uppercase letter, one lowercase letter, and be at least 6 characters long."
       );
-      toast.error("Password does not meet the required criteria.");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "Password does not meet the required criteria.",
+      });
       return;
     }
 
@@ -59,21 +62,37 @@ const Register = () => {
               photoURL: formData.photoURL,
             });
             logOut();
-            toast.success("Registration successful!");
-            navigate("/"); // Redirect to homepage after registration
+            Swal.fire({
+              icon: 'success',
+              title: 'Registration successful!',
+              text: 'You can now log in.',
+            });
+            navigate("/login"); // Redirect to login after registration
           })
           .catch((error) => {
             setError("Failed to update user profile: " + error.message);
-            toast.error("Failed to update user profile.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Failed to update user profile',
+              text: error.message,
+            });
           });
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
           setError("This email is already registered. Please log in.");
-          toast.error("This email is already in use. Please log in.");
+          Swal.fire({
+            icon: 'error',
+            title: 'Email already in use',
+            text: "This email is already in use. Please log in.",
+          });
         } else {
           setError(error.message);
-          toast.error(error.message);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error.message,
+          });
         }
       });
 
@@ -87,7 +106,11 @@ const Register = () => {
 
   const handleGoogleLogin = () => {
     googleLogIn();
-    toast.success("Logged in successfully");
+    Swal.fire({
+      icon: 'success',
+      title: 'Logged in successfully',
+      text: 'Welcome back!',
+    });
     navigate("/");
   };
 
@@ -211,8 +234,6 @@ const Register = () => {
           </Link>
         </p>
       </div>
-
-      <ToastContainer />
     </div>
   );
 };
